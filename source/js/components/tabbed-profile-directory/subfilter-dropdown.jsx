@@ -15,7 +15,7 @@ const SubfilterDropdown = ({
   // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (subFiltersDropdown) {
+      if (subFiltersDropdown.current) {
         if (!subFiltersDropdown.current.contains(event.target)) {
           setDropdownExpanded(false);
         }
@@ -80,7 +80,7 @@ const SubfilterDropdown = ({
               onChange={onChangeShowAll}
             />
             <label className="form-check-label hover:tw-cursor-pointer">
-              <span class="checkbox" />
+              <span className="checkbox" />
               <div>{getText("Show All")}</div>
             </label>
           </div>
