@@ -6,8 +6,6 @@
 #
 airtable-python-wrapper==0.13.0
     # via wagtail-airtable
-anyascii==0.2.0
-    # via wagtail
 asgiref==3.4.1
     # via
     #   django
@@ -15,16 +13,14 @@ asgiref==3.4.1
 basket-client==1.0.0
     # via -r requirements.in
 beautifulsoup4==4.9.3
-    # via
-    #   -r requirements.in
-    #   wagtail
+    # via -r requirements.in
 boto3==1.20.14
     # via -r requirements.in
 botocore==1.23.14
     # via
     #   boto3
     #   s3transfer
-cached_property==1.5.2
+cached-property==1.5.2
     # via -r requirements.in
 certifi==2021.5.30
     # via
@@ -51,7 +47,7 @@ defusedxml==0.7.1
     #   social-auth-core
 dj-database-url==0.5.0
     # via -r requirements.in
-django==3.1.11
+django==3.2.11
     # via
     #   -r requirements.in
     #   django-admin-sortable
@@ -60,12 +56,8 @@ django==3.1.11
     #   django-filter
     #   django-redis
     #   django-storages
-    #   django-taggit
-    #   django-treebeard
     #   djangorestframework
-    #   wagtail
     #   wagtail-footnotes
-    #   wagtail-localize
     #   wagtail-localize-git
 django-admin-sortable==2.2.3
     # via -r requirements.in
@@ -76,28 +68,15 @@ django-csp==3.7
 django-environ==0.4.5
     # via -r requirements.in
 django-filter==2.4.0
-    # via
-    #   -r requirements.in
-    #   wagtail
-django-modelcluster==5.2
-    # via wagtail
+    # via -r requirements.in
 django-redis==5.0.0
     # via -r requirements.in
 django-storages==1.11.1
     # via -r requirements.in
-django-taggit==1.5.1
-    # via wagtail
-django-treebeard==4.5.1
-    # via wagtail
 djangorestframework==3.12.4
     # via
     #   -r requirements.in
-    #   wagtail
     #   wagtail-airtable
-draftjs-exporter==2.1.7
-    # via wagtail
-et-xmlfile==1.1.0
-    # via openpyxl
 factory-boy==3.2.0
     # via
     #   -r requirements.in
@@ -110,16 +89,14 @@ filebrowser-safe==0.5.0
     # via -r requirements.in
 future==0.18.2
     # via -r requirements.in
-gitdb==4.0.7
+gitdb==4.0.9
     # via gitpython
-gitpython==3.1.18
+gitpython==3.1.26
     # via wagtail-localize-git
 gunicorn==20.1.0
     # via -r requirements.in
 heroku3==5.1.4
     # via -r requirements.in
-html5lib==1.1
-    # via wagtail
 idna==3.2
     # via
     #   requests
@@ -128,18 +105,10 @@ jmespath==0.10.0
     # via
     #   boto3
     #   botocore
-l18n==2020.6.1
-    # via wagtail
 oauthlib==3.1.1
     # via
     #   requests-oauthlib
     #   social-auth-core
-openpyxl==3.0.7
-    # via tablib
-pillow==8.3.2
-    # via wagtail
-polib==1.1.1
-    # via wagtail-localize
 psutil==5.8.0
     # via scout-apm
 psycopg2-binary==2.9.1
@@ -164,10 +133,7 @@ python-slugify==5.0.2
 python3-openid==3.2.0
     # via social-auth-core
 pytz==2021.1
-    # via
-    #   django
-    #   django-modelcluster
-    #   l18n
+    # via django
 redis==3.5.3
     # via django-redis
 requests==2.26.0
@@ -179,7 +145,6 @@ requests==2.26.0
     #   requests-oauthlib
     #   scout-apm
     #   social-auth-core
-    #   wagtail
 requests-oauthlib==1.3.0
     # via social-auth-core
 s3transfer==0.5.0
@@ -193,11 +158,9 @@ six==1.16.0
     #   airtable-python-wrapper
     #   basket-client
     #   cloudinary
-    #   html5lib
-    #   l18n
     #   pyopenssl
     #   python-dateutil
-smmap==4.0.0
+smmap==5.0.0
     # via gitdb
 social-auth-app-django==5.0.0
     # via -r requirements.in
@@ -207,10 +170,6 @@ soupsieve==2.2.1
     # via beautifulsoup4
 sqlparse==0.4.1
     # via django
-tablib[xls,xlsx]==3.0.0
-    # via wagtail
-telepath==0.2
-    # via wagtail
 text-unidecode==1.3
     # via
     #   faker
@@ -226,14 +185,13 @@ urllib3[secure]==1.26.6
     #   requests
     #   scout-apm
     #   sentry-sdk
-wagtail==2.15.1
+wagtail @ https://releases.wagtail.org/nightly/dist/wagtail-2.16.dev20220119-py3-none-any.whl
     # via
     #   -r requirements.in
     #   wagtail-airtable
     #   wagtail-factories
     #   wagtail-footnotes
     #   wagtail-inventory
-    #   wagtail-localize
     #   wagtail-localize-git
     #   wagtail-metadata
     #   wagtailmedia
@@ -245,7 +203,7 @@ wagtail-footnotes @ git+https://github.com/MozillaFoundation/wagtail-footnotes.g
     # via -r requirements.in
 wagtail-inventory==1.3
     # via -r requirements.in
-wagtail-localize==1.0.1
+wagtail-localize @ https://zerolab.org/_dumps/wagtail_localize-1.1.dev20220222-py3-none-any.whl
     # via
     #   -r requirements.in
     #   wagtail-localize-git
@@ -255,20 +213,10 @@ wagtail-metadata==3.4.0
     # via -r requirements.in
 wagtailmedia==0.8.0
     # via -r requirements.in
-webencodings==0.5.1
-    # via html5lib
 whitenoise==5.3.0
     # via -r requirements.in
-willow==1.4
-    # via wagtail
 wrapt==1.12.1
     # via scout-apm
-xlrd==2.0.1
-    # via tablib
-xlsxwriter==1.4.5
-    # via wagtail
-xlwt==1.3.0
-    # via tablib
 
 # The following packages are considered to be unsafe in a requirements file:
 # setuptools
