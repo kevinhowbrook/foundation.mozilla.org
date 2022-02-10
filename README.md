@@ -56,6 +56,8 @@ Use `inv -l` to get a list of all the available invoke commands.
 
 More information on how to work with Docker and how to manage Python dependencies are available in the [local development](docs/local_development.md) part of the documentation.
 
+Adding test change
+
 ## Testing
 
 ### Code tests
