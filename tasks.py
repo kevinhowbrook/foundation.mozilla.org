@@ -306,3 +306,61 @@ def pip_sync(ctx):
             "docker-compose run --rm backend ./dockerpythonvenv/bin/pip-sync requirements.txt dev-requirements.txt",
             **PLATFORM_ARG,
         )
+
+
+def get_docker_service_statuses(ctx):
+    with ctx.cd(ROOT):
+        with open(os.devnull, 'w') as f:
+            result = ctx.run("docker-compose ps", echo=False, out_stream=f)
+        lines = result.stdout.strip().split("\n")
+        services = []
+        for line in lines[1:]:
+            entries = line.split()
+            services.append((entries[2], entries[3]))
+        return services
+
+
+@task
+def start_service(ctx, service):
+    with ctx.cd(ROOT):
+        ctx.run(f"docker-compose up {service} -d")
+
+
+@task
+def stop_service(ctx, service):
+    with ctx.cd(ROOT):
+        ctx.run(f"docker-compose stop {service}")
+
+
+@task
+def start_not_running_services(ctx):
+    services = get_docker_service_statuses(ctx)
+    started_services = []
+    for service in services:
+        if service[1] != "running":
+            start_service(ctx, service[0])
+            started_services.append(service[0])
+    print(f"Started services: {started_services}")
+    ctx.started_services = started_services
+
+
+@task
+def stop_started_services(ctx):
+    print(f"Stopping started services: {ctx.started_services}")
+    for service in ctx.started_services:
+        stop_service(ctx, service)
+
+
+def exec_manage(ctx, command):
+    with ctx.cd(ROOT):
+        ctx.run(
+            f"docker-compose exec backend ./dockerpythonvenv/bin/python network-api/manage.py {command}",
+            warn=True
+        )
+
+
+@task(pre=[start_not_running_services], post=[stop_started_services])
+def run_manage(ctx, command):
+    "Run Django management command."
+    # This is just a dumb wrapper making sure that the services are running.
+    exec_manage(ctx, command)
